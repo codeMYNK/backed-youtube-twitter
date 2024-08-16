@@ -1,8 +1,7 @@
 // require('dotenv').config({path: './env'})
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
-import express from "express";
-const app = express();
+import { app } from './app.js'
 
 // Load environment variables from the env file
 dotenv.config();
@@ -11,11 +10,16 @@ dotenv.config();
 connectDB()
 .then(() => {
   app.listen(process.env.PORT || 8000, () => {
-    console.log(`Server is running at ${process.env.PORT}`);
+    console.log(`⚙️ Server is running at ${process.env.PORT}`);
     
   });
 })
 .catch((error) => console.error("Error connecting to MongoDB:", error.message));
+
+
+
+
+
 
 /*
 First Approch : Neglected beacuse it is polluting our index.js and bringing everything at one place which is making it cluttered
